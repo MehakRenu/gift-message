@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Love you Aryan</title>
+  <style>
+    body {
+      font-family: 'Arial, sans-serif';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .heart-bouquet {
+      font-size: 5rem;
+      animation: bounce 1.5s infinite alternate;
+    }
+
+    .heart-bouquet span {
+      margin: 0 5px;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .envelope {
+      position: relative;
+      margin: 30px auto 0;
+      width: 200px;
+      height: 120px;
+      background: #fff;
+      border: 2px solid #f06292;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.1);
+    }
+
+    .envelope::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 60px solid #f06292;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .gift {
+      display: none;
+      margin-top: 20px;
+      font-size: 2rem;
+      animation: bounce 2s infinite alternate;
+    }
+
+    /* Heart Confetti */
+    .confetti {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      font-size: 2rem;
+      animation: confetti 3s ease-in-out forwards;
+    }
+
+    .confetti:nth-child(1) { animation-delay: 0.2s; }
+    .confetti:nth-child(2) { animation-delay: 0.4s; }
+    .confetti:nth-child(3) { animation-delay: 0.6s; }
+    .confetti:nth-child(4) { animation-delay: 0.8s; }
+    .confetti:nth-child(5) { animation-delay: 1s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+
+    @keyframes confetti {
+      0% { opacity: 1; transform: translateY(-50px) translateX(0); }
+      100% { opacity: 0; transform: translateY(300px) translateX(50px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>I Love you Aryan 💖</h1>
+    <div class="heart-bouquet">
+      <span>💖</span><span>💖</span><span>💖</span><br>
+      <span>💖</span><span>💖</span><br>
+      <span>💖</span>
+    </div>
+    <div class="envelope" onclick="openEnvelope()"></div>
+    <div class="message" id="message">From Mehak: heyyoo idiot! 💕</div>
+    <div class="gift" id="gift">🎁 Surprise Gift: Infinite Love 💝</div>
+  </div>
+
+  <!-- Confetti -->
+  <div class="confetti">❤️</div>
+  <div class="confetti">💖</div>
+  <div class="confetti">💜</div>
+  <div class="confetti">💗</div>
+  <div class="confetti">💞</div>
+
+  <script>
+    function openEnvelope() {
+      const message = document.getElementById('message');
+      const gift = document.getElementById('gift');
+      const confetti = document.querySelectorAll('.confetti');
+
+      if (message.style.display === 'none') {
+        message.style.display = 'block';
+        confetti.forEach((heart) => {
+          heart.style.animationPlayState = 'running';
+        });
+        setTimeout(() => {
+          gift.style.display = 'block';
+        }, 2000); // Show gift after 2 seconds
+      } else {
+        message.style.display = 'none';
+        gift.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
